@@ -40,18 +40,40 @@ def get_character_movies_from_api(character_name)
   swap={}
   
   response_hash.each do |x,y|
+
     if x == "results"
-      y.each do |a,b|
-        if a["name"]=character_name
-          swap[a["name"]]=a["films"]
+      
+      y.each do |a|
+        a.each do |k,l|
+            if l==character_name
+              swap[a["name"]]=a["films"]
+            end
+          end
         end
       end
     end
-  end
 
   swap
 end
 
+# swap={}
+  
+# response_hash.each do |x,y|
+
+#   if x == "results"
+    
+#     y.each do |a|
+#       a.each do |k,l|
+#           if l=="Owen Lars"
+#             swap[a["name"]]=a["films"]
+#           end
+#         end
+#       end
+#     end
+#   end
+
+
+#   binding.pry
 
 
 def print_movies(films)
